@@ -169,3 +169,33 @@ Here’s a breakdown of key entities, their fields, and relationships for a typi
 **Relationships:**
 
 - A **Payment** is linked to one **Booking**.
+
+## Feature Breakdown
+
+### User Management
+
+Allows users to register, log in, and manage their profiles. Hosts can list properties, while guests can book and review them. Ensures secure authentication and role-based access control (e.g., admin, host, guest).
+
+### Property Management
+
+Enables hosts to create, update, and delete property listings with details like title, description, price, and amenities. Supports image uploads and location-based search for guests.
+
+### Booking System
+
+Handles reservation workflows: guests check availability, book properties, and view their upcoming stays. Includes date validation, pricing calculations, and conflict prevention for overlapping bookings.
+
+### Reviews & Ratings
+
+Guests can leave ratings and comments for properties they’ve booked. Hosts receive feedback, and future guests see aggregate scores to make informed decisions.
+
+### Payment Processing
+
+Integrates with payment gateways (e.g., Stripe, PayPal) to securely handle transactions. Tracks payment status (completed/pending/failed) and sends receipts to guests.
+
+### Search & Filtering
+
+Guests can search properties by location, price range, amenities, or dates. Filters improve discoverability and match users with ideal listings quickly.
+
+### Admin Dashboard
+
+Provides administrators with tools to manage users, properties, and bookings. Includes analytics (e.g., revenue, popular listings) and moderation (e.g., flagging inappropriate content).
