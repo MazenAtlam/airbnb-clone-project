@@ -199,3 +199,53 @@ Guests can search properties by location, price range, amenities, or dates. Filt
 ### Admin Dashboard
 
 Provides administrators with tools to manage users, properties, and bookings. Includes analytics (e.g., revenue, popular listings) and moderation (e.g., flagging inappropriate content).
+
+## API Security
+
+### Authentication
+
+**Implementation:** JWT (JSON Web Tokens) with secure HTTP-only cookies  
+
+**Why it matters:** Ensures only verified users can access protected endpoints. Prevents unauthorized access to sensitive user data like profiles and booking history.
+
+### Authorization (RBAC)
+
+**Implementation:** Role-Based Access Control (e.g., Guest/Host/Admin permissions)  
+
+**Why it matters:** Restricts critical actions (e.g., deleting properties) to authorized roles. Hosts can't modify bookings they don't own, protecting data integrity.
+
+### Rate Limiting
+
+**Implementation:** Throttling (e.g., 100 requests/minute per IP)  
+
+**Why it matters:** Prevents brute force attacks and API abuse that could overload servers or enable payment fraud.
+
+### Data Validation & Sanitization
+
+**Implementation:** Input validation (e.g., OWASP checks) + ORM parameterization  
+
+**Why it matters:** Blocks SQL injection and XSS attacks targeting property listings/payment forms where malicious inputs could compromise data.
+
+### HTTPS Encryption
+
+**Implementation:** TLS 1.2+ with HSTS headers  
+
+**Why it matters:** Encrypts all API traffic, especially vital for payment details and personal data during transmission.
+
+### Payment Security
+
+**Implementation:** PCI-compliant processors (Stripe/PayPal) + never storing raw card data  
+
+**Why it matters:** Reduces liability for financial data breaches. Tokens replace sensitive info for recurring bookings.
+
+### Audit Logging
+
+**Implementation:** Timestamped logs of auth attempts and admin actions  
+
+**Why it matters:** Helps trace breaches or suspicious activities (e.g., unauthorized booking modifications).
+
+---
+
+> **Security-First Approach**  
+
+> Each measure addresses specific threats: authentication prevents impersonation, rate limiting stops DDoS, and payment security builds user trust. Regular penetration testing will validate defenses.
