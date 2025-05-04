@@ -66,3 +66,106 @@ An in-memory data store for caching (speeding up frequent requests) or real-time
 
 ### **Nginx**
 A web server and reverse proxy. Handles load balancing, SSL termination, and static file serving to improve backend performance and security.
+
+## Database Design
+
+Here’s a breakdown of key entities, their fields, and relationships for a typical property booking platform (like Airbnb):
+
+### **1. User**
+
+**Fields:**
+
+- `id` (Unique identifier)
+
+- `name` (Full name)
+
+- `email` (Login/communication)
+
+- `password` (Securely hashed)
+
+- `role` (Host/Guest/Admin)
+
+**Relationships:**
+
+- A **User** (as a *Host*) can own multiple **Properties**.
+
+- A **User** (as a *Guest*) can make multiple **Bookings** and **Reviews**.
+
+### **2. Property**
+
+**Fields:**
+
+- `id` (Unique identifier)
+
+- `title` (Property name)
+
+- `description` (Details/amenities)
+
+- `price_per_night` (Cost)
+
+- `host_id` (Foreign key to **User**)
+
+**Relationships:**
+
+- A **Property** belongs to one **User** (Host).
+
+- A **Property** can have multiple **Bookings** and **Reviews**.
+
+### **3. Booking**
+
+**Fields:**
+
+- `id` (Unique identifier)
+
+- `check_in_date` (Start date)
+
+- `check_out_date` (End date)
+
+- `total_price` (Calculated cost)
+
+- `guest_id` (Foreign key to **User**)
+
+- `property_id` (Foreign key to **Property**)
+
+**Relationships:**
+
+- A **Booking** belongs to one **User** (Guest) and one **Property**.
+
+- A **Booking** can have one associated **Payment**.
+
+
+### **4. Review**
+
+**Fields:**
+
+- `id` (Unique identifier)
+
+- `rating` (e.g., 1–5 stars)
+
+- `comment` (Feedback text)
+
+- `guest_id` (Foreign key to **User**)
+
+- `property_id` (Foreign key to **Property**)
+
+**Relationships:**
+
+- A **Review** is written by one **User** (Guest) about one **Property**.
+
+### **5. Payment**
+
+**Fields:**
+
+- `id` (Unique identifier)
+
+- `amount` (Transaction value)
+
+- `status` (Paid/Pending/Failed)
+
+- `booking_id` (Foreign key to **Booking**)
+
+- `payment_method` (Card/PayPal/etc.)
+
+**Relationships:**
+
+- A **Payment** is linked to one **Booking**.
