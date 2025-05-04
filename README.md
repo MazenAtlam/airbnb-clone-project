@@ -249,3 +249,35 @@ Provides administrators with tools to manage users, properties, and bookings. In
 > **Security-First Approach**  
 
 > Each measure addresses specific threats: authentication prevents impersonation, rate limiting stops DDoS, and payment security builds user trust. Regular penetration testing will validate defenses.
+
+## CI/CD Pipeline
+
+### What is CI/CD?
+
+Continuous Integration (CI) and Continuous Deployment (CD) automate the process of testing, building, and deploying code changes. CI ensures every code commit is validated, while CD delivers updates to production reliably. Together, they reduce manual errors and accelerate development cycles.
+
+### Why It Matters for This Project
+
+Automated pipelines catch bugs early during testing, ensure consistent deployments, and enable rapid iteration on features like booking logic or payment processing. For a user-facing platform, this means fewer downtimes and faster delivery of security patches.
+
+### Tools & Workflow
+
+- **GitHub Actions/GitLab CI**: Run automated tests (unit/integration) on every push to `main`  
+
+- **Docker**: Containerize the app for consistent environments from development to production  
+
+- **AWS CodeDeploy/Kubernetes**: Manage zero-downtime deployments to cloud servers  
+
+- **SonarCloud**: Static code analysis to monitor code quality and security vulnerabilities  
+
+---
+
+> **Key Stages**:  
+
+> 1. **Test**: Lint, unit tests, and integration tests  
+
+> 2. **Build**: Create Docker images with version tags  
+
+> 3. **Deploy**: Roll out to staging/production with health checks  
+
+For scalability, the pipeline can later include load testing and canary deployments.
